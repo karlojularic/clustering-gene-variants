@@ -2,7 +2,7 @@
 import argparse
 from Bio import SeqIO
 
-from distance import alignment
+from distance import distance_matrix
 
 def main():
     parser = argparse.ArgumentParser()
@@ -24,6 +24,11 @@ def main():
 
     print(f"Number of fragments stored: {len(stored_fragments)}")
     print(f"Total number of fragments: {total}")
+
+    matrix = distance_matrix(stored_fragments)
+    print(f"Distance matrix:")
+    for i, row in enumerate(matrix):
+        print(f"Fragment {i}: {row}")
 
 if __name__ == '__main__':
     main()
