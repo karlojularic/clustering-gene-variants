@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from Bio import SeqIO
+import spoa
 
 from distance import distance_matrix
 
@@ -25,7 +26,9 @@ def main():
     print(f"Number of fragments stored: {len(stored_fragments)}")
     print(f"Total number of fragments: {total}")
 
-    matrix = distance_matrix(stored_fragments)
+    conseunsus, msa = spoa.poa(stored_fragments.values())
+
+    matrix = distance_matrix(msa)
     print(f"Distance matrix:")
     for i, row in enumerate(matrix):
         print(f"Fragment {i}: {row}")
