@@ -4,6 +4,7 @@ from Bio import SeqIO
 import spoa
 
 from distance import distance_matrix
+from clustering import greedy_clustering
 
 def main():
     parser = argparse.ArgumentParser()
@@ -33,5 +34,15 @@ def main():
     for i, row in enumerate(matrix):
         print(f"Fragment {i}: {row}")
 
+    clusters = greedy_clustering(msa, matrix)
+    new_clusters = {}
+    for cluster_id, cluster in clusters.items():
+        if len(cluster) >= 10:              # cluster has to have at least 10 reads
+            new_clusters[cluster_id] = cluster
+
+    for cluster_id, cluster in new_clusters.items():
+        print(f"Cluster {cluster_id}: {cluster}")
+
+    
 if __name__ == '__main__':
     main()
