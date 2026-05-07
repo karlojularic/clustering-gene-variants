@@ -34,9 +34,6 @@ def main():
     consensus, msa = spoa.poa(stored_fragments.values())
 
     matrix = distance_matrix(msa)
-    print(f"Distance matrix:")
-    for i, row in enumerate(matrix):
-        print(f"Fragment {i}: {row}")
 
     clusters = greedy_clustering(msa, matrix)
     new_clusters = {}
