@@ -1,34 +1,72 @@
 #!/usr/bin/env python3
 import argparse
+import subprocess
 from Bio import SeqIO
 import spoa
 
 from distance import distance_matrix
 from clustering import greedy_clustering, cluster_representative
 
+def parsing_config(config_file):
+
+    config = {}
+
+    with open(config_file, 'r') as file:
+        for line in file:
+            if '=' in line:
+                key, value = line.split('=', 1)
+                config[key.strip()] = value.strip()
+    return config
+
+
+def emboss_testing(representatives_file, reference_file, gapopen, gapextend):
+    result = subprocess.run(
+        [
+            "needle",
+            representatives_file,
+            reference_file,
+            "-gapopen", str(gapopen),
+            "-gapextend", str(gapextend),
+            "-outfile", "representative_vs_expected.txt",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        print(f"needle failed:\n{result.stderr}")
+    else:
+        print("Alignment written to representative_vs_expected.txt")
+    
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('reference', type=str)
-    parser.add_argument('fragments', type=str)
-
+    parser.add_argument('config_file', type=str)
     args = parser.parse_args()
 
-    reference = SeqIO.parse(args.reference, 'fasta')
-    fragments = SeqIO.parse(args.fragments, 'fastq')
+    config = parsing_config(args.config_file)
+    reference_file = config['reference_file']
+    fragments_file = config['fragments_file']
+    gapopen = config['gapopen']
+    gapextend = config['gapextend']
+    fragment_length = config['fragment_length']
+
+    reference = SeqIO.parse(reference_file, 'fasta')
+    fragments = SeqIO.parse(fragments_file, 'fastq')
 
     stored_fragments = {}
     total = 0
 
     for fragment in fragments:
         total += 1
-        if len(fragment.seq) == 296:
+        if len(fragment.seq) == int(fragment_length):
             stored_fragments[fragment.id] = str(fragment.seq)
 
     print(f"Number of fragments stored: {len(stored_fragments)}")
     print(f"Total number of fragments: {total}")
 
     if len(stored_fragments) == 0:
-        print("No fragments of length 296 found.")
+        print(f"No fragments of length {fragment_length} found.")
         return
 
     consensus, msa = spoa.poa(stored_fragments.values())
@@ -61,6 +99,7 @@ def main():
             output_file.write(f"{representative_sequence}\n")
 
     print("Representatives written to representatives.fasta")
+    emboss_testing("representatives.fasta", reference_file, gapopen, gapextend)
 
 if __name__ == '__main__':
     main()
