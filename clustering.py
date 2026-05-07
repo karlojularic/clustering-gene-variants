@@ -15,10 +15,6 @@ def greedy_clustering(msa, matrix):
     return clusters
 
 def cluster_representative(cluster, matrix):
-    """
-    The representative sequence of a cluster is the medoid: the sequence with the smallest
-    average distance to all other sequences in the same cluster
-    """
     if len(cluster) == 1:
         return cluster[0]
 
