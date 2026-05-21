@@ -60,13 +60,15 @@ def main():
     reference = SeqIO.parse(reference_file, 'fasta')
     fragments = SeqIO.parse(fragments_file, 'fastq')
 
-    stored_fragments = {}
-    total = 0
+    all_fragments = {f.id: str(f.seq) for f in fragments}
+    total = len(all_fragments)
 
-    for fragment in fragments:
-        total += 1
-        if len(fragment.seq) == int(fragment_length):
-            stored_fragments[fragment.id] = str(fragment.seq)
+    target_length = int(fragment_length)
+    stored_fragments = {}
+
+    for fid, seq in all_fragments.items():
+        if abs(len(seq) - target_length) <= 5:          # length is not capped at the set number
+            stored_fragments[fid] = seq
 
     print(f"Number of fragments stored: {len(stored_fragments)}")
     print(f"Total number of fragments: {total}")
@@ -106,7 +108,19 @@ def main():
             output_file.write(f"{representative_sequence}\n")
 
     print(f"Representatives written to {representatives_file}")
-    emboss_testing(representatives_file, reference_file, gapopen, gapextend, f"{output_prefix}_alignment.txt")
+
+    for cluster_id, cluster in new_clusters.items():
+        representative_index = cluster_representative(cluster, matrix)
+        representative_sequence = fragment_sequences[representative_index]
+        representative_id = fragment_ids[representative_index]
+
+        cluster_fasta = f"{output_prefix}_cluster{cluster_id}_representative.fasta"
+        with open(cluster_fasta, "w", encoding="utf-8") as f:
+            f.write(f">cluster_{cluster_id}_{representative_id}\n")
+            f.write(f"{representative_sequence}\n")
+
+        alignment_file = f"{output_prefix}_cluster{cluster_id}_alignment.txt"
+        emboss_testing(cluster_fasta, reference_file, gapopen, gapextend, alignment_file)
 
 if __name__ == '__main__':
     main()
