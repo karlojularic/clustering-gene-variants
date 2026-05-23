@@ -67,7 +67,7 @@ def main():
     stored_fragments = {}
 
     for fid, seq in all_fragments.items():
-        if abs(len(seq) - target_length) <= 5:          # length is not capped at the set number
+        if len(seq) == target_length:
             stored_fragments[fid] = seq
 
     print(f"Number of fragments stored: {len(stored_fragments)}")
