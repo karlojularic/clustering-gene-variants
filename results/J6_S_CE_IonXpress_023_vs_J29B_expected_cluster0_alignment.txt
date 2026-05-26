@@ -1,0 +1,144 @@
+########################################
+# Program: needle
+# Rundate: Sat 23 May 2026 11:31:51
+# Commandline: needle
+#    [-asequence] results/J6_S_CE_IonXpress_023_vs_J29B_expected_cluster0_representative.fasta
+#    [-bsequence] data/J29B_expected.fasta
+#    -gapopen 10
+#    -gapextend 0.5
+#    -outfile results/J6_S_CE_IonXpress_023_vs_J29B_expected_cluster0_alignment.txt
+# Align_format: srspair
+# Report_file: results/J6_S_CE_IonXpress_023_vs_J29B_expected_cluster0_alignment.txt
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 00091
+# 2: J29B-1_M13F-pUC
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 296
+# Identity:     230/296 (77.7%)
+# Similarity:   230/296 (77.7%)
+# Gaps:          47/296 (15.9%)
+# Score: 1063.0
+# 
+#
+#=======================================
+
+00091              1 GATCCTCTCTCTGCAGCACATTTCCTGGAGTATGCTAAGAGCGAGTGTCA     50
+                                             ||   |||||||||||||||||||||
+J29B-1_M13F-p      1 ------------------------CT---GTATGCTAAGAGCGAGTGTCA     23
+
+00091             51 TTTCTCCAACGGGACGCAGCGGGTGGAGTACCTGGACAGATACTTCTATA    100
+                     ||||||||||||||||||||||||||.||.||||||||||||||||||||
+J29B-1_M13F-p     24 TTTCTCCAACGGGACGCAGCGGGTGGGGTTCCTGGACAGATACTTCTATA     73
+
+00091            101 ACGGAGAAGAGTACGTGCGCTTCGACAGCGACTGGGGCGAGTTCCGGGCG    150
+                     ||||||||||||.|||||||||||||||||||||||||||||.|||||||
+J29B-1_M13F-p     74 ACGGAGAAGAGTTCGTGCGCTTCGACAGCGACTGGGGCGAGTACCGGGCG    123
+
+00091            151 GTGACAGAGCTGGGGCGGCCGGACGCCAAGTACTGGAACAGCCAGAAGGA    200
+                     ||||||||||||||||||||||..|||.|||||..|||||||||||||||
+J29B-1_M13F-p    124 GTGACAGAGCTGGGGCGGCCGGTGGCCGAGTACCTGAACAGCCAGAAGGA    173
+
+00091            201 TTTCATGGAGCAGAAGCGGGCCGAGGTGGACACGGTGTGCAGACACAACT    250
+                     .|.|||||||||||.|||||||||||||||||||...|||||||||||||
+J29B-1_M13F-p    174 GTACATGGAGCAGACGCGGGCCGAGGTGGACACGTACTGCAGACACAACT    223
+
+00091            251 ACGGGGTTTTTGAGAGTTTCACTGTGCAGCGGCGAGGTGACGCGAA    296
+                     ||||.|...|||||||||||||||||                    
+J29B-1_M13F-p    224 ACGGCGGCGTTGAGAGTTTCACTGTG--------------------    249
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 00091
+# 2: J29B-3_M13F-pUC
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 297
+# Identity:     234/297 (78.8%)
+# Similarity:   234/297 (78.8%)
+# Gaps:          49/297 (16.5%)
+# Score: 1083.0
+# 
+#
+#=======================================
+
+00091              1 GATCCTCTCTCTGCAGCACATTTCCTGGAGTATGCTAAGAGCGAGTGTCA     50
+                                             ||   ||||.|||.||||||||||||
+J29B-3_M13F-p      1 ------------------------CT---GTATACTACGAGCGAGTGTCA     23
+
+00091             51 TTTCTCCAACGGGACGCAGCGGGTGGAGTACCTGGACAGATACTTCTATA    100
+                     ||||||||||||||||||||||||||.||.||||||||||||||||||||
+J29B-3_M13F-p     24 TTTCTCCAACGGGACGCAGCGGGTGGGGTTCCTGGACAGATACTTCTATA     73
+
+00091            101 ACGGAGAAGAGTACGTGCGCTTCGACAGCGACTGGGGCGAGTTCCGGGCG    150
+                     ||||||||||||||||||||||||||||||||||||||||||.|||||||
+J29B-3_M13F-p     74 ACGGAGAAGAGTACGTGCGCTTCGACAGCGACTGGGGCGAGTACCGGGCG    123
+
+00091            151 GTGACAGAGCTGGGGCGGCCGGACGCCAAGTACTGGAACAGCCAGAAGGA    200
+                     |||||||||||||||||||||..|||||||||||||||||||||||||||
+J29B-3_M13F-p    124 GTGACAGAGCTGGGGCGGCCGTCCGCCAAGTACTGGAACAGCCAGAAGGA    173
+
+00091            201 TTTCATGGAGCAGAAGCGGGCCGAGGTGGACACGGT-GTGCAGACACAAC    249
+                     .|.|||||||||||.||||||||||||||||| ||| .||||||||||||
+J29B-3_M13F-p    174 GTACATGGAGCAGACGCGGGCCGAGGTGGACA-GGTACTGCAGACACAAC    222
+
+00091            250 TACGGGGTTTTTGAGAGTTTCACTGTGCAGCGGCGAGGTGACGCGAA    296
+                     |||||||||.||||.||||||.|||||                    
+J29B-3_M13F-p    223 TACGGGGTTCTTGACAGTTTCGCTGTG--------------------    249
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 00091
+# 2: J29B-6_M13F-pUC
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 297
+# Identity:     224/297 (75.4%)
+# Similarity:   224/297 (75.4%)
+# Gaps:          49/297 (16.5%)
+# Score: 1004.0
+# 
+#
+#=======================================
+
+00091              1 GATCCTCTCTCTGCAGCACATTTCCTGGAGTATGCTAAGAGCGAGTGTCA     50
+                                                |||.||..||||.||||||||||
+J29B-6_M13F-p      1 ---------------------------GAGCATCATAAGTGCGAGTGTCA     23
+
+00091             51 TTTCTCCAACGGGACGCAGCGGGTGGAGTACCTGGACAGATACTTCTATA    100
+                     ||||||||||||||||.||||||||.|||.||||.|.||||||.||||||
+J29B-6_M13F-p     24 TTTCTCCAACGGGACGGAGCGGGTGCAGTTCCTGCAGAGATACATCTATA     73
+
+00091            101 ACGGAGAAGAGTACGTGCGCTTCGACAGCGACTGGGGCGAGTTCCGGGCG    150
+                     ||.|.|||||||||||||||||||||||||||||||||||||.|||||||
+J29B-6_M13F-p     74 ACCGGGAAGAGTACGTGCGCTTCGACAGCGACTGGGGCGAGTACCGGGCG    123
+
+00091            151 GTGACAGAGCTGGGGCGGCCGGACGCCAAGTACTGGAACAGCCAGAAGGA    200
+                     |||||||||||||||||||||..|||||||||||..||||||||||||||
+J29B-6_M13F-p    124 GTGACAGAGCTGGGGCGGCCGTCCGCCAAGTACTATAACAGCCAGAAGGA    173
+
+00091            201 TTTCATGGAGCAGAAGCGGGCCGAGGTGGACACGGT-GTGCAGACACAAC    249
+                     ..||.||||||||||||||||||.|||||||| ||| .||||||||||||
+J29B-6_M13F-p    174 GCTCCTGGAGCAGAAGCGGGCCGCGGTGGACA-GGTACTGCAGACACAAC    222
+
+00091            250 TACGGGGTTTTTGAGAGTTTCACTGTGCAGCGGCGAGGTGACGCGAA    296
+                     ||||||||..|||||||||||||||||                    
+J29B-6_M13F-p    223 TACGGGGTCGTTGAGAGTTTCACTGTG--------------------    249
+
+
+#---------------------------------------
+#---------------------------------------

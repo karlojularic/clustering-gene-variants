@@ -1,0 +1,5 @@
+reference_file = data/J30B_expected.fasta
+fragments_file = data/fastq/J30_B_CE_IonXpress_006.fastq
+gapopen = 10
+gapextend = 0.5
+fragment_length = 296

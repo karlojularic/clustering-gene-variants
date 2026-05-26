@@ -1,0 +1,144 @@
+########################################
+# Program: needle
+# Rundate: Sat 23 May 2026 11:30:16
+# Commandline: needle
+#    [-asequence] results/J37_B_CE_IonXpress_013_vs_J30B_expected_cluster3_representative.fasta
+#    [-bsequence] data/J30B_expected.fasta
+#    -gapopen 10
+#    -gapextend 0.5
+#    -outfile results/J37_B_CE_IonXpress_013_vs_J30B_expected_cluster3_alignment.txt
+# Align_format: srspair
+# Report_file: results/J37_B_CE_IonXpress_013_vs_J30B_expected_cluster3_alignment.txt
+########################################
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 00332
+# 2: jelenref02
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 296
+# Identity:     216/296 (73.0%)
+# Similarity:   216/296 (73.0%)
+# Gaps:          47/296 (15.9%)
+# Score: 948.0
+# 
+#
+#=======================================
+
+00332              1 GATCCTCTCTCTGCAGCACATTTCCTGGAGTATTACAAGAGCGAGTGTCA     50
+                                                ||||||...||||||||||||||
+jelenref02         1 ---------------------------GAGTATGCTAAGAGCGAGTGTCA     23
+
+00332             51 TTTCTTCAACGGGACGCAGCGGGTGCGGTTCCTGCACAGATGCTTTTCTA    100
+                     |||||.||||||||||||||||||||||||||||.||||||.|||.|.||
+jelenref02        24 TTTCTCCAACGGGACGCAGCGGGTGCGGTTCCTGGACAGATACTTCTATA     73
+
+00332            101 ATGGAGAAGAGACCGTGCGCTTCGACAGCGACGTGGGCGAGTACCGGGCG    150
+                     |..|.||||||..|||||||||||||||||||..||||||||.|||||||
+jelenref02        74 ACCGGGAAGAGTACGTGCGCTTCGACAGCGACTGGGGCGAGTTCCGGGCG    123
+
+00332            151 GTGACAGAGCTGGGGCGGCCGGACGCCGAGCTCTGGAACAGCCAGAAGGA    200
+                     |||||.|||||||||||||||..||||.||..||||||||||||||||||
+jelenref02       124 GTGACCGAGCTGGGGCGGCCGTCCGCCAAGTACTGGAACAGCCAGAAGGA    173
+
+00332            201 GCTCCTGGAGCAGAGGCGGGCCGCGGTGGACACGTACTGCAGACACAACT    250
+                     ..||.|||||||||.||||||||.||||||||||...|||||||||||||
+jelenref02       174 TTTCATGGAGCAGAAGCGGGCCGAGGTGGACACGGTGTGCAGACACAACT    223
+
+00332            251 ACGGGGTCGGTGAGAGTTTCACTGTGCAGCGGCGAGGTGACGCGAA    296
+                     |||||||...||||||||||||||||                    
+jelenref02       224 ACGGGGTTATTGAGAGTTTCACTGTG--------------------    249
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 00332
+# 2: jelenref01
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 296
+# Identity:     218/296 (73.6%)
+# Similarity:   218/296 (73.6%)
+# Gaps:          47/296 (15.9%)
+# Score: 966.0
+# 
+#
+#=======================================
+
+00332              1 GATCCTCTCTCTGCAGCACATTTCCTGGAGTATTACAAGAGCGAGTGTCA     50
+                                                |||.||...|||..|||||||||
+jelenref01         1 ---------------------------GAGCATCTTAAGGCCGAGTGTCA     23
+
+00332             51 TTTCTTCAACGGGACGCAGCGGGTGCGGTTCCTGCACAGATGCTTTTCTA    100
+                     ||||||||||||||||.|||||.|||.|||||||...||||.|||.|.||
+jelenref01        24 TTTCTTCAACGGGACGGAGCGGATGCAGTTCCTGGCGAGATACTTCTATA     73
+
+00332            101 ATGGAGAAGAGACCGTGCGCTTCGACAGCGACGTGGGCGAGTACCGGGCG    150
+                     |.|||||||||..||.||||||||||||||||||||||||||.|||||||
+jelenref01        74 ACGGAGAAGAGTACGCGCGCTTCGACAGCGACGTGGGCGAGTTCCGGGCG    123
+
+00332            151 GTGACAGAGCTGGGGCGGCCGGACGCCGAGCTCTGGAACAGCCAGAAGGA    200
+                     |||||.|||||||||||||||||||||.||..||||||||||||||||||
+jelenref01       124 GTGACCGAGCTGGGGCGGCCGGACGCCAAGTACTGGAACAGCCAGAAGGA    173
+
+00332            201 GCTCCTGGAGCAGAGGCGGGCCGCGGTGGACACGTACTGCAGACACAACT    250
+                     |.|||||||||||...|||||.|.||||||||.|||||||||||||||||
+jelenref01       174 GATCCTGGAGCAGCACCGGGCAGAGGTGGACAGGTACTGCAGACACAACT    223
+
+00332            251 ACGGGGTCGGTGAGAGTTTCACTGTGCAGCGGCGAGGTGACGCGAA    296
+                     ||||||||||||||||||||||||||                    
+jelenref01       224 ACGGGGTCGGTGAGAGTTTCACTGTG--------------------    249
+
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: 00332
+# 2: jelenref04
+# Matrix: EDNAFULL
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 297
+# Identity:     225/297 (75.8%)
+# Similarity:   225/297 (75.8%)
+# Gaps:          49/297 (16.5%)
+# Score: 999.5
+# 
+#
+#=======================================
+
+00332              1 GATCCTCTCTCTGCAGCACATTTCCTGGAGTATTAC-AAGAGCGAGTGTC     49
+                                        ||        ||| ||| ||||..|||||||
+jelenref04         1 -------------------AT--------GTA-TACTAAGAAAGAGTGTC     22
+
+00332             50 ATTTCTTCAACGGGACGCAGCGGGTGCGGTTCCTGCACAGATGCTTTTCT     99
+                     ||||||.|||||||||||||||||||.||.|||||.||||||.|||.|.|
+jelenref04        23 ATTTCTCCAACGGGACGCAGCGGGTGGGGCTCCTGGACAGATACTTCTAT     72
+
+00332            100 AATGGAGAAGAGACCGTGCGCTTCGACAGCGACGTGGGCGAGTACCGGGC    149
+                     ||.|||||||||..|||||||||||||||||||..||||||||.||||||
+jelenref04        73 AACGGAGAAGAGTTCGTGCGCTTCGACAGCGACTGGGGCGAGTTCCGGGC    122
+
+00332            150 GGTGACAGAGCTGGGGCGGCCGGACGCCGAGCTCTGGAACAGCCAGAAGG    199
+                     ||||||.||||||||||||||||..||||||..|||||||||||||||||
+jelenref04       123 GGTGACCGAGCTGGGGCGGCCGGCGGCCGAGGGCTGGAACAGCCAGAAGG    172
+
+00332            200 AGCTCCTGGAGCAGAGGCGGGCCGCGGTGGACACGTACTGCAGACACAAC    249
+                     ||||||||||||||||||||||||||||||||||||||||||||||||||
+jelenref04       173 AGCTCCTGGAGCAGAGGCGGGCCGCGGTGGACACGTACTGCAGACACAAC    222
+
+00332            250 TACGGGGTCGGTGAGAGTTTCACTGTGCAGCGGCGAGGTGACGCGAA    296
+                     ||||||||...||||||||||||||||                    
+jelenref04       223 TACGGGGTTATTGAGAGTTTCACTGTG--------------------    249
+
+
+#---------------------------------------
+#---------------------------------------
