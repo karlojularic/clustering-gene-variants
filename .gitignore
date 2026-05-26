@@ -209,3 +209,4 @@ __marimo__/
 data/
 representatives.fasta
 representative_vs_expected.txt
+.vscode/
