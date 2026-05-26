@@ -1,6 +1,6 @@
 ########################################
 # Program: needle
-# Rundate: Sat 23 May 2026 11:29:37
+# Rundate: Sun 24 May 2026 22:37:29
 # Commandline: needle
 #    [-asequence] results/J30_B_CE_IonXpress_006_vs_J30B_expected_cluster2_representative.fasta
 #    [-bsequence] data/J30B_expected.fasta

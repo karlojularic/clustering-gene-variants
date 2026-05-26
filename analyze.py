@@ -3,8 +3,6 @@ import os
 import re
 import csv
 
-RESULTS_DIR = "results"
-
 def parse_alignment_file(filepath):
     alignments = []
     current = {}
@@ -31,25 +29,23 @@ def parse_alignment_file(filepath):
 def main():
     rows = []
 
-    for filename in sorted(os.listdir(RESULTS_DIR)):
+    for filename in sorted(os.listdir("results")):
         if not filename.endswith("_alignment.txt"):
             continue
         if "_cluster" not in filename:
             continue
 
-        # parse filename: SAMPLE_vs_REF_clusterN_alignment.txt
         m = re.match(r"(.+)_vs_(.+)_(cluster\d+)_alignment\.txt", filename)
         if not m:
             continue
         sample, ref, cluster = m.group(1), m.group(2), m.group(3)
 
-        filepath = os.path.join(RESULTS_DIR, filename)
+        filepath = os.path.join("results", filename)
         alignments = parse_alignment_file(filepath)
 
         if not alignments:
             continue
 
-        # find best matching allele
         best = max(alignments, key=lambda a: a["identity"])
 
         row = {
@@ -68,7 +64,6 @@ def main():
         print("No results found.")
         return
 
-    # collect all allele column names
     allele_cols = []
     for row in rows:
         for k in row:
@@ -83,10 +78,6 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"Saved {len(rows)} rows to {output_csv}")
-
-    # print summary per sample
-    print("\n--- Summary (best allele per cluster) ---")
     current_sample = None
     for row in rows:
         if row["sample"] != current_sample:
