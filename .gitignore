@@ -210,3 +210,8 @@ data/
 representatives.fasta
 representative_vs_expected.txt
 .vscode/
+
+# Generated output files
+results/
+analysis_results.csv
+*_alignment.txt
