@@ -215,3 +215,5 @@ representative_vs_expected.txt
 results/
 analysis_results.csv
 *_alignment.txt
+cross_sample_results.csv
+variant_representatives.fasta

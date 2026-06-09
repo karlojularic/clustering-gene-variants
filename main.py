@@ -77,6 +77,10 @@ def main():
         print(f"No fragments of length {fragment_length} found.")
         return
 
+    if len(stored_fragments) < 100:
+        print(f"Insufficient fragments of length {fragment_length}: {len(stored_fragments)} (minimum 100). Skipping.")
+        return
+
     consensus, msa = spoa.poa(stored_fragments.values())
 
     matrix = distance_matrix(msa)
