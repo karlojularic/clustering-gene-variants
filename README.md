@@ -26,15 +26,13 @@ analysis_results.csv        # rezultati (generirano s analyze.py)
 
 ## Pokretanje
 
-Projekt se pokreće u tri koraka:
-
 ```bash
-# 1. Obraditi uzorke za svaku referentnu bazu
 python main.py config_J29.txt
 python main.py config_J30.txt
 
-# 2. Skupljanje rezultate poravnanja u CSV
 python analyze.py
+
+python cross_sample_analysis.py
 ```
 
 `main.py` obrađuje jedan uzorak prema jednoj referentnoj bazi. Za obradu više uzoraka pokrenuti jednom po uzorku.
@@ -69,3 +67,5 @@ Uzorci s manje od 100 očitanja ciljane duljine automatski se isključuju. Klast
 | `results/*_cluster*_representative.fasta`  | Reprezentativna sekvenca pojedinog klastera          |
 | `results/*_cluster*_alignment.txt`         | needle poravnanje s referentnim alelima              |
 | `analysis_results.csv`                      | Svi klasteri s najboljim alelom i % identičnosti     |
+| `cross_sample_results.csv`                  | Jedinstvene varijante kroz sve uzorke s identičnošću prema J29B i J30B alelima |
+| `variant_representatives.fasta`             | Reprezentativne sekvence svih jedinstvenih varijanti |
