@@ -84,7 +84,96 @@ def main():
             current_sample = row["sample"]
             print(f"\n{current_sample} (ref: {row['reference_db']})")
         print(f"  {row['cluster']}: {row['best_allele']} ({row['best_identity']}%)")
+    
+    analyze_global_variants()
 
+
+def sequence_distance(seq1, seq2):
+    if len(seq1) != len(seq2):
+        return 1.0
+
+    differences = 0
+    for a, b in zip(seq1, seq2):
+        if a != b:
+            differences += 1
+
+    return differences / len(seq1)
+
+
+def analyze_global_variants():
+    threshold = 0.05
+    cluster_rows = []
+
+    for filename in sorted(os.listdir("results")):
+        if not filename.endswith("_clusters.csv"):
+            continue
+
+        filepath = os.path.join("results", filename)
+
+        with open(filepath, newline="", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                row["cluster_size"] = int(row["cluster_size"])
+                cluster_rows.append(row)
+
+    if not cluster_rows:
+        print("No cluster summary files found for global variant analysis.")
+        return
+
+    variants = []
+
+    for row in cluster_rows:
+        sequence = row["representative_sequence"]
+        added = False
+
+        for variant in variants:
+            distance = sequence_distance(sequence, variant["representative_sequence"])
+
+            if distance < threshold:
+                variant["clusters"].append(row)
+                variant["total_reads"] += row["cluster_size"]
+                added = True
+                break
+
+        if not added:
+            variants.append({
+                "variant_id": f"variant_{len(variants) + 1}",
+                "representative_sequence": sequence,
+                "clusters": [row],
+                "total_reads": row["cluster_size"]
+            })
+
+    total_reads = sum(v["total_reads"] for v in variants)
+
+    with open("global_variant_frequencies.csv", "w", newline="", encoding="utf-8") as f:
+        fieldnames = [
+            "variant_id",
+            "total_reads",
+            "frequency_percent",
+            "number_of_clusters",
+            "samples",
+            "representative_sequence"
+        ]
+
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+
+        for variant in variants:
+            samples = sorted(set(row["sample"] for row in variant["clusters"]))
+            frequency = (variant["total_reads"] / total_reads) * 100
+
+            writer.writerow({
+                "variant_id": variant["variant_id"],
+                "total_reads": variant["total_reads"],
+                "frequency_percent": round(frequency, 2),
+                "number_of_clusters": len(variant["clusters"]),
+                "samples": ";".join(samples),
+                "representative_sequence": variant["representative_sequence"]
+            })
+
+    print(f"\nGlobal variant analysis:")
+    print(f"Found {len(variants)} global variants.")
+    print("Written: global_variant_frequencies.csv")
 
 if __name__ == "__main__":
     main()

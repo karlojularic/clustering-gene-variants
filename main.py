@@ -4,6 +4,7 @@ import os
 import subprocess
 from Bio import SeqIO
 import spoa
+import csv
 
 from distance import distance_matrix
 from clustering import greedy_clustering, cluster_representative
@@ -95,7 +96,21 @@ def main():
     fragment_sequences = list(stored_fragments.values())
 
     representatives_file = f"{output_prefix}_representatives.fasta"
-    with open(representatives_file, "w", encoding="utf-8") as output_file:
+    clusters_csv = f"{output_prefix}_clusters.csv"
+
+    with open(representatives_file, "w", encoding="utf-8") as output_file, \
+         open(clusters_csv, "w", newline="", encoding="utf-8") as csv_file:
+
+        writer = csv.DictWriter(csv_file, fieldnames=[
+            "sample",
+            "reference_db",
+            "cluster",
+            "cluster_size",
+            "representative_id",
+            "representative_sequence"
+        ])
+        writer.writeheader()
+
         for cluster_id, cluster in new_clusters.items():
             representative_index = cluster_representative(cluster, matrix)
             representative_id = fragment_ids[representative_index]
@@ -107,7 +122,17 @@ def main():
             output_file.write(f">cluster_{cluster_id}_{representative_id}\n")
             output_file.write(f"{representative_sequence}\n")
 
+            writer.writerow({
+                "sample": sample_name,
+                "reference_db": ref_name,
+                "cluster": f"cluster{cluster_id}",
+                "cluster_size": len(cluster),
+                "representative_id": representative_id,
+                "representative_sequence": representative_sequence
+            })
+
     print(f"Representatives written to {representatives_file}")
+    print(f"Cluster summary written to {clusters_csv}")
 
     for cluster_id, cluster in new_clusters.items():
         representative_index = cluster_representative(cluster, matrix)
